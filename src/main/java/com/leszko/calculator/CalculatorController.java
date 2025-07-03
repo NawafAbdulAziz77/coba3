@@ -28,7 +28,14 @@ class CalculatorController {
      } 
 
      @GetMapping("/tables")
-        public List<Map<String, Object>> getTables() {
-            return jdbcTemplate.queryForList("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='PUBLIC'");
-        }
+     public List<Map<String, Object>> getTables() {
+         try {
+             return jdbcTemplate.queryForList(
+                 "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='PUBLIC'"
+             );
+         } catch (Exception e) {
+             e.printStackTrace(); // biar nongol di Jenkins log
+             return List.of(Map.of("error", e.getMessage()));
+         }
+}
 } 
