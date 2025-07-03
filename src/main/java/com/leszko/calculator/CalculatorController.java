@@ -17,6 +17,7 @@ class CalculatorController {
      private Calculator calculator; 
      @Autowired 
      private CalculationRepository calculationRepository;
+     @Autowired 
      private JdbcTemplate jdbcTemplate; 
  
      @RequestMapping("/sum") 
