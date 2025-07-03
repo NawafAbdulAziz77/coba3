@@ -20,4 +20,9 @@ class CalculatorController {
           calculationRepository.save(new Calculation(a.toString(), b.toString(), result, Timestamp.from(Instant.now()))); 
           return result;
      } 
+
+     @GetMapping("/tables")
+        public List<Map<String, Object>> getTables() {
+            return jdbcTemplate.queryForList("SHOW TABLES");
+        }
 } 
