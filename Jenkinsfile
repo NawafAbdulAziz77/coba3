@@ -23,13 +23,9 @@ pipeline {
                 sh 'curl "http://localhost:8081/sum?a=2&b=3"'
             }
         }
-      stage('Show Tables') {
+              stage('Show Tables') {
             steps {
-                sh '''
-                    echo "Menampilkan daftar tabel di H2 Database:"
-                    java -cp build/libs/*.jar:~/.m2/repository/com/h2database/h2/1.4.200/h2-1.4.200.jar \\
-                        org.h2.tools.Shell -url "jdbc:h2:file:./tmp/calculator" -user sa -password "" -sql "SHOW TABLES;"
-                '''
+                sh 'curl "http://localhost:8081/tables"'
             }
         }
     }
