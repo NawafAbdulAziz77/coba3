@@ -6,6 +6,11 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Flyway Migrate') {
+            steps {
+        sh './gradlew flywayMigrate'
+          }
+        }
         stage('Build') {
             steps {
                 sh 'chmod +x gradlew'
