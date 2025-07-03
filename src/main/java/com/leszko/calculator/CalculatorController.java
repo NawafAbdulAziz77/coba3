@@ -29,6 +29,6 @@ class CalculatorController {
 
      @GetMapping("/tables")
         public List<Map<String, Object>> getTables() {
-            return jdbcTemplate.queryForList("SHOW TABLES");
+            return jdbcTemplate.queryForList("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='PUBLIC'");
         }
 } 
