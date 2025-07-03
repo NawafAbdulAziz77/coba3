@@ -32,7 +32,7 @@ class CalculatorController {
      public List<Map<String, Object>> getTables() {
          try {
              return jdbcTemplate.queryForList(
-                 "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='PUBLIC'"
+                 "SELECT * FROM CALCULATION"
              );
          } catch (Exception e) {
              e.printStackTrace(); // biar nongol di Jenkins log
