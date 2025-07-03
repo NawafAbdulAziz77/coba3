@@ -17,6 +17,7 @@ class CalculatorController {
      private Calculator calculator; 
      @Autowired 
      private CalculationRepository calculationRepository;
+     private JdbcTemplate jdbcTemplate; 
  
      @RequestMapping("/sum") 
      String sum(@RequestParam("a") Integer a,  
